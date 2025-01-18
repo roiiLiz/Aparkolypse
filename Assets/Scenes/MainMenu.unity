@@ -591,6 +591,34 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7722004367543381296, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722004367543381296, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722004367543381296, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1912699028}
+    - target: {fileID: 7722004367543381296, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722004367543381296, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722004367543381296, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722004367543381296, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8552812306510635546, guid: 65b226ee8cd1d394face6e06cafb619a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
