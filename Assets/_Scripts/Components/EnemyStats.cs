@@ -7,6 +7,7 @@ public class EnemyStats : ScriptableObject
     public int healthAmount;
     public int damageAmount;
     public int damageRange;
+    public float attackRate;
     public int movementSpeed;
     public int creditsOnDeath;
 }

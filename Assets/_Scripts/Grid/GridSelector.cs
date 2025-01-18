@@ -16,7 +16,7 @@ public class GridSelector : MonoBehaviour
     [SerializeField]
     private float sphereRadius = 1f;
 
-
+    public static event Action OnTileClicked;
     // Update is called once per frame
     private void Update()
     {
@@ -26,9 +26,14 @@ public class GridSelector : MonoBehaviour
 
         selectionPreview.transform.position = grid.GetCellCenterWorld(gridCellPosition);
 
-        if (input.GetGridInput() && GridTileIsEmpty())
+        if (input.GetGridInput())
         {
-            Instantiate(towerPrefab, selectionPreview.transform.position, Quaternion.identity, grid.gameObject.transform);
+            if (GridTileIsEmpty())
+            {
+                Instantiate(towerPrefab, selectionPreview.transform.position, Quaternion.identity, grid.gameObject.transform);
+            }
+
+            OnTileClicked?.Invoke();
         }
     }
 

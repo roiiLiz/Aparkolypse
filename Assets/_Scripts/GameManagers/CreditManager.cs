@@ -10,6 +10,8 @@ public class CreditManager : MonoBehaviour
     private float timeBetweenCredits;
 
     private int totalCredits;
+    public int TotalCredits { get { return totalCredits; } }
+
     private float time;
     
     public static event Action<int> OnCreditsUpdate;

@@ -5,6 +5,7 @@ using UnityEngine;
 public enum UnitType
 {
     Player,
+    Friendly,
     Enemy,
     Boss
 }
@@ -22,7 +23,7 @@ public class HealthComponent : MonoBehaviour
 
     private int currentHealth;
 
-    public int MaxHealth { get { return maxHealth; } }
+    public int MaxHealth { get { return maxHealth; } set { SetHealth(value); } }
     public int CurrentHealth { get { return currentHealth; } }
     public UnitType UnitType { get { return unitType; } }
 
@@ -31,13 +32,24 @@ public class HealthComponent : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void SetHealth(int incomingAmount)
+    {
+        maxHealth = incomingAmount;
+        currentHealth = maxHealth;
+        CheckHealth();
+    }
+
     public void Damage(Attack attack)
     {
         currentHealth -= attack.damageAmount;
+        CheckHealth();
+    }
 
+    private void CheckHealth()
+    {
         if (currentHealth <= 0)
         {
-            if (deathComponent != null) 
+            if (deathComponent != null)
             {
                 deathComponent.Die(this);
             }
