@@ -18,12 +18,19 @@ public class FriendlyUnit : MonoBehaviour
     private HealthComponent healthComponent;
     [SerializeField]
     private AttackCollider attackRange;
+    [SerializeField]
+    private Material supportMaterial, headMaterial;
+
+    private MeshRenderer mesh => GetComponent<MeshRenderer>();
 
     private UnitState unitState = UnitState.Default;
     private int attackDamage;
     private bool canAttack = true;
     private float knockbackForce;
     private float attackRate;
+
+    // private void OnEnable() { GridSelector.OnDetermineHead += ChangeMesh; }
+    // private void OnDisable() { GridSelector.OnDetermineHead -= ChangeMesh; }
 
     private void Start()
     {
@@ -53,6 +60,11 @@ public class FriendlyUnit : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void SetCartType(bool isHeadCart)
+    {
+        mesh.material = isHeadCart ? headMaterial : supportMaterial;
     }
 
     private void BeginAttack()

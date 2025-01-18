@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2806796237498302354}
   - component: {fileID: 5790114668326146098}
+  - component: {fileID: 3902450498315312980}
   m_Layer: 3
   m_Name: AttackTrigger
   m_TagString: AttackTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2806796237498302354
 Transform:
   m_ObjectHideFlags: 0
@@ -53,6 +54,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: -2, y: 0, z: 0}
+--- !u!114 &3902450498315312980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561794650677663810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59ad017205936f4490e0bfd8fb4589b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
 --- !u!1 &5231241139198684911
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,4 +204,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: eb5593d368385884d919a038527fea20, type: 2}
   healthComponent: {fileID: 5177494522029504450}
-  attackRange: {fileID: 5790114668326146098}
+  attackRange: {fileID: 3902450498315312980}
+  supportMaterial: {fileID: 2100000, guid: 16b577c23f49b4844b7437344718d6ab, type: 2}
+  headMaterial: {fileID: 2100000, guid: 08453908e59ac3e4b9fe3da7bdc25d5e, type: 2}

@@ -14,8 +14,3 @@ public class FriendlyUnitStats : ScriptableObject
     public OverclockStrategy overclockStrategy;
     public int creditCost;
 }
-
-public abstract class OverclockStrategy : ScriptableObject
-{
-    public abstract void OverclockEffects();
-}
