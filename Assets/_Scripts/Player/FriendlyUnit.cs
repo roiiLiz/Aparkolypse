@@ -43,11 +43,11 @@ public class FriendlyUnit : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("Input");
-            StartCoroutine(BeginAttackCooldown());
-        }
+        // if (Input.GetKeyDown(KeyCode.W))
+        // {
+        //     // Debug.Log("Input");
+        //     StartCoroutine(BeginAttackCooldown());
+        // }
 
         switch (unitState)
         {

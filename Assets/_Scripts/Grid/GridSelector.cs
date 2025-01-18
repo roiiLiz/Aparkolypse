@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridSelector : MonoBehaviour
 {
     [Header("Grid Selection")]
     [SerializeField]
-    private GameObject selectionPreview, towerPrefab;
+    private GameObject selectionPreview;
+    [SerializeField]
+    private Tower selectedTowerPrefab;
     [SerializeField]
     private Grid grid;
     [SerializeField]
@@ -20,6 +23,9 @@ public class GridSelector : MonoBehaviour
 
     public static event Action<GameObject> OnPlaceCart;
 
+    private void OnEnable () { UnitShop.OnSelectNewTower += UpdateSelection; }
+    private void OnDisable () { UnitShop.OnSelectNewTower -= UpdateSelection; }
+
     // Update is called once per frame
     private void Update()
     {
@@ -27,40 +33,20 @@ public class GridSelector : MonoBehaviour
 
         Vector3Int gridCellPosition = grid.WorldToCell(selectedPosition);
 
-        selectionPreview.transform.position = grid.GetCellCenterWorld(gridCellPosition);
+        selectionPreview.transform.position = grid.GetCellCenterWorld(gridCellPosition) - new Vector3(0, 0.5f, 0);
 
         if (input.GetGridInput() && GridTileIsEmpty())
         {
             // CheckAdjacentTiles();
-            var cart = Instantiate(towerPrefab, selectionPreview.transform.position, Quaternion.identity, grid.gameObject.transform);
+            var cart = Instantiate(selectedTowerPrefab.prefab, selectionPreview.transform.position, Quaternion.identity, grid.gameObject.transform);
             OnPlaceCart?.Invoke(cart);
         }
     }
 
-    // private void CheckAdjacentTiles()
-    // {
-    //     GameObject headCart = null;
-
-    //     Collider[] intersectingObjects = Physics.OverlapBox(selectionPreview.transform.position, new Vector3((grid.cellSize.x + grid.cellGap.x) * maxGridLength, 1f, 1f), Quaternion.identity, input.gridLayerMask);
-    //     if (intersectingObjects.Length != 0)
-    //     {
-    //         for (int i = 0; i > intersectingObjects.Length; i++)
-    //         {
-    //             Debug.Log($"Name: {intersectingObjects[i].gameObject.name}");
-    //             if (i == 0)
-    //             {
-    //                 headCart = intersectingObjects[i].gameObject;
-    //             }
-                
-    //             if (intersectingObjects[i].gameObject.transform.position.x > headCart.transform.position.x)
-    //             {
-    //                 headCart = intersectingObjects[i].gameObject;
-    //             }
-    //         }
-
-    //         OnDetermineHead?.Invoke(headCart);
-    //     }
-    // }
+    public void UpdateSelection(Tower incomingSelection)
+    {
+        selectedTowerPrefab = incomingSelection;
+    }
 
     private bool GridTileIsEmpty()
     {

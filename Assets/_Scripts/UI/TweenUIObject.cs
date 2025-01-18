@@ -15,10 +15,20 @@ public class TweenUIObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private Vector3 defaultScale;
 
+    public bool selected = false;
+
     private void Start()
     {
         defaultScale = transform.localScale;
     }
+
+    // private void Update()
+    // {
+    //     if (transform.localScale != hoverScale && selected)
+    //     {
+    //         StartCoroutine(BeginTween(defaultScale, hoverScale, tweenDuration));
+    //     }
+    // }
 
     private void OnDisable()
     {
