@@ -22,6 +22,7 @@ public class AttackCollider : MonoBehaviour
             if (unit == null || unit == friendlyUnit)
             {
                 Debug.Log("Hello from if statement");
+                //hi^
                 enemies.RemoveAt(i);
             }
         }
