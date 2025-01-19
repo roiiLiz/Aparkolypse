@@ -6,8 +6,11 @@ public class EnemyStats : ScriptableObject
     [Header("Stats")]
     public int healthAmount;
     public int damageAmount;
-    public int damageRange;
+    // public int damageRange;
+    [Tooltip("Describes the attacks per second when 'in range'")]
     public float attackRate;
-    public int movementSpeed;
+    [Tooltip("Describes the amount of seconds it takes to move one grid unit")]
+    public int movementSpeedInSeconds;
     public int creditsOnDeath;
+    public EnemyState startingState = EnemyState.Walking;
 }
