@@ -18,8 +18,8 @@ public class HealthComponent : MonoBehaviour
     private DeathComponent deathComponent;
     [SerializeField]
     private UnitType unitType;
-    // [SerializeField]
-    // private DamageFlashComponent damageFlashComponent;
+    [SerializeField]
+    private DamageFlashComponent damageFlashComponent;
 
     private int currentHealth;
 
@@ -42,6 +42,10 @@ public class HealthComponent : MonoBehaviour
     public void Damage(Attack attack)
     {
         currentHealth -= attack.damageAmount;
+        if (damageFlashComponent != null) 
+        {
+            damageFlashComponent.BeginDamageFlash();
+        }
         CheckHealth();
     }
 

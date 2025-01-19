@@ -13,7 +13,7 @@ public class GameOver : MonoBehaviour
 
     private void Start()
     {
-        InitiateCleanup();
+        CleanUpGameOver();
     }
 
     private void RetryCleanup()
