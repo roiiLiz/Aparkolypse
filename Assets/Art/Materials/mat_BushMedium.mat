@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat_BushNormal
+  m_Name: mat_BushMedium
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: 9a41ed5b2cfe8384490a52cdfa768dae, type: 2}
+  m_Parent: {fileID: 2100000, guid: 6a883d8f98118b542b4d13c5bdc87221, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -28,5 +28,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0.77088696, g: 0.82641506, b: 0.6907582, a: 1}
+    - _Color: {r: 0.8867924, g: 0.8624105, b: 0.7412246, a: 1}
   m_BuildTextureStacks: []
