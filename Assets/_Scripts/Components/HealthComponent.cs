@@ -13,6 +13,7 @@ public enum UnitType
 
 public class HealthComponent : MonoBehaviour
 {
+    [Header("Required Components")]
     [SerializeField]
     private int maxHealth = 10;
     [SerializeField]
@@ -21,6 +22,15 @@ public class HealthComponent : MonoBehaviour
     private UnitType unitType;
     [SerializeField]
     private DamageFlashComponent damageFlashComponent;
+    [Header("Castle / Player Stats")]
+    [SerializeField]
+    private int firstLifeThreshold;
+    [SerializeField]
+    private int secondLifeThreshold;
+    [SerializeField]
+    private int thirdLifeThreshold;
+
+    public static event Action OnDamageThresholdReached;
 
     private int currentHealth;
 
@@ -66,6 +76,21 @@ public class HealthComponent : MonoBehaviour
 
     private void CheckHealth()
     {
+        if (unitType == UnitType.Player)
+        {
+            if (currentHealth <= firstLifeThreshold)
+            {
+                OnDamageThresholdReached?.Invoke();
+            } else if (currentHealth <= secondLifeThreshold)
+            {
+                OnDamageThresholdReached?.Invoke();
+            } else if (currentHealth <= thirdLifeThreshold)
+            {
+                OnDamageThresholdReached?.Invoke();
+            }
+        }
+
+
         if (currentHealth <= 0)
         {
             if (deathComponent != null)

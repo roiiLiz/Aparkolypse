@@ -21,11 +21,13 @@ public class CreditManager : MonoBehaviour
     private void OnEnable()
     {
         EnemyDeathComponent.grantDeathCredits += AddCredits;
+        GridSelector.OnBuyUnit += SubtractCredits;
     }
 
     private void OnDisable()
     {
         EnemyDeathComponent.grantDeathCredits -= AddCredits;
+        GridSelector.OnBuyUnit += SubtractCredits;
     }
 
     private void Start()

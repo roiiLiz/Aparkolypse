@@ -35,6 +35,9 @@ public class WaveManager : MonoBehaviour
         public float waveDeadline;
     }
 
+    private void OnEnable() { HealthComponent.OnDamageThresholdReached += ClearWave; }
+    private void OnDisable() { HealthComponent.OnDamageThresholdReached -= ClearWave; }
+
     private void Update()
     {
         if (waveActive)
@@ -46,6 +49,11 @@ public class WaveManager : MonoBehaviour
             }
             
         }
+    }
+
+    private void ClearWave()
+    {
+        StartCoroutine(RickeyClear());
     }
 
     public IEnumerator WaveSpawn()
@@ -83,7 +91,7 @@ public class WaveManager : MonoBehaviour
 
         //StartCoroutine(waveUpdate());
 
-        StartCoroutine(RickeyClear());
+        // StartCoroutine(RickeyClear());
 
         //begin music, or fade to new track
         //expose waveIndicator UI element

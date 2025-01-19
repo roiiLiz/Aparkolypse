@@ -50,4 +50,5 @@ public class Tower
 {
     public GameObject prefab;
     public FriendlyUnitType unitType;
+    public FriendlyUnitStats stats;
 }

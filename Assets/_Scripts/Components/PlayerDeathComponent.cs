@@ -8,7 +8,8 @@ public class PlayerDeathComponent : DeathComponent
 
     public override void Die(MonoBehaviour context)
     {
-        context.gameObject.SetActive(false);
+        
+        // context.gameObject.SetActive(false);
         playerDied?.Invoke();
     }
 }

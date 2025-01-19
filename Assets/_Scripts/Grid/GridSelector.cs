@@ -20,10 +20,14 @@ public class GridSelector : MonoBehaviour
     private float sphereRadius = 1f;
     [SerializeField]
     private float maxGridLength = 11f;
+    [Header("Credits Reference")]
+    [SerializeField]
+    private CreditManager creditManager;
 
     private MeshRenderer selectionMesh;
 
     public static event Action<GameObject> OnPlaceCart;
+    public static event Action<int> OnBuyUnit;
 
     private void OnEnable () { UnitShop.OnSelectNewTower += UpdateSelection; }
     private void OnDisable () { UnitShop.OnSelectNewTower -= UpdateSelection; }
@@ -43,10 +47,11 @@ public class GridSelector : MonoBehaviour
 
         selectionMesh.enabled = input.allowPlacement;
 
-        if (input.GetGridInput() && GridTileIsEmpty())
+        if (input.GetGridInput() && GridTileIsEmpty() && creditManager.TotalCredits >= selectedTowerPrefab.stats.creditCost)
         {
             // CheckAdjacentTiles();
             var cart = Instantiate(selectedTowerPrefab.prefab, selectionPreview.transform.position, Quaternion.identity, grid.gameObject.transform);
+            OnBuyUnit?.Invoke(selectedTowerPrefab.stats.creditCost);
             OnPlaceCart?.Invoke(cart);
         }
     }
