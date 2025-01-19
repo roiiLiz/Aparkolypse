@@ -37,14 +37,20 @@ public class CreditManager : MonoBehaviour
 
     private void Update()
     {
+        if (gameplayManager.state != GameState.RIDE)
+        {
+            return;
+        }
+
         if (time < timeBetweenCredits)
         {
             time += Time.deltaTime;
-        } else if (gameplayManager.state == GameState.RIDE)
+        } else
         {
             time = 0f;
             AddCredits(creditsGenerated);
         }
+        
     }
 
     public void SetCredits(int creditAmount)

@@ -15,7 +15,7 @@ MonoBehaviour:
   healthAmount: 15
   damageAmount: 5
   range: 0
-  attackRate: 1
+  attackRate: 0.1666667
   knockbackForce: 0
   attackType: 1
   creditCost: 20

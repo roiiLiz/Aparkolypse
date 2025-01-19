@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthAmount: 10
   damageAmount: 15
-  attackRate: 0
+  attackRate: 0.5
   movementSpeedInSeconds: 2
   creditsOnDeath: 5
+  attackType: 0
+  unitType: 2
   startingState: 0

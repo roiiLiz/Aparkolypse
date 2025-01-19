@@ -39,6 +39,8 @@ public class EnemyUnit : MonoBehaviour
 
     private void Start()
     {
+        healthComponent.SetHealth(stats.healthAmount);
+
         currentState = stats.startingState;
         movementSpeed = stats.movementSpeedInSeconds;
         attackDamageAmount = stats.damageAmount;
@@ -46,19 +48,6 @@ public class EnemyUnit : MonoBehaviour
         attackType = stats.attackType;
         unitType = stats.unitType;
 
-        // if (unitType == UnitType.Boss)
-        // {
-        //     InitializeFiringPoints();
-        // }
-    }
-
-    private void InitializeFiringPoints()
-    {
-        GameObject[] points = GameObject.FindGameObjectsWithTag("BossFiringPoints");
-        foreach (GameObject point in points)
-        {
-            firingPoints.Append(point.transform);
-        }
     }
 
     private void Update()

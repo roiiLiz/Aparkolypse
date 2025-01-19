@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2141e5751ff4ed4f811e8eadd0580ef, type: 3}
   m_Name: SnollerStats
   m_EditorClassIdentifier: 
-  healthAmount: 60
-  damageAmount: 15
-  attackRate: 1
+  healthAmount: 100
+  damageAmount: 10
+  attackRate: 0.33
   movementSpeedInSeconds: 0
   creditsOnDeath: 0
   attackType: 1
