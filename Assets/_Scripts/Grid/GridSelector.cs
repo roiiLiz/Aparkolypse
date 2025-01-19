@@ -21,11 +21,17 @@ public class GridSelector : MonoBehaviour
     [SerializeField]
     private float maxGridLength = 11f;
 
+    private MeshRenderer selectionMesh;
+
     public static event Action<GameObject> OnPlaceCart;
 
     private void OnEnable () { UnitShop.OnSelectNewTower += UpdateSelection; }
     private void OnDisable () { UnitShop.OnSelectNewTower -= UpdateSelection; }
 
+    private void Start()
+    {
+        selectionMesh = selectionPreview.GetComponent<MeshRenderer>();
+    }
     // Update is called once per frame
     private void Update()
     {
@@ -34,6 +40,8 @@ public class GridSelector : MonoBehaviour
         Vector3Int gridCellPosition = grid.WorldToCell(selectedPosition);
 
         selectionPreview.transform.position = grid.GetCellCenterWorld(gridCellPosition) - new Vector3(0, 0.5f, 0);
+
+        selectionMesh.enabled = input.allowPlacement;
 
         if (input.GetGridInput() && GridTileIsEmpty())
         {

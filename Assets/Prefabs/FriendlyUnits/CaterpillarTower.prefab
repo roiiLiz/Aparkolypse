@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2806796237498302354}
   - component: {fileID: 5790114668326146098}
   - component: {fileID: 3902450498315312980}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: AttackTrigger
   m_TagString: AttackTrigger
   m_Icon: {fileID: 0}
@@ -303,8 +303,9 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: b865743ac54a09547a1d89568c2bb1f5, type: 2}
   healthComponent: {fileID: 5177494522029504450}
   attackRange: {fileID: 3902450498315312980}
-  supportMaterial: {fileID: 2100000, guid: 16b577c23f49b4844b7437344718d6ab, type: 2}
-  headMaterial: {fileID: 2100000, guid: 08453908e59ac3e4b9fe3da7bdc25d5e, type: 2}
+  supportImage: {fileID: 21300000, guid: a944df5f7a16a57498667ad3137130a8, type: 3}
+  headImage: {fileID: 21300000, guid: 877f5dd1f5db7fb4aba76df2ad3c52a0, type: 3}
+  unitIcon: {fileID: 8687894952771596698}
   firingPoint: {fileID: 2806796237498302354}
   bulletPrefab: {fileID: 6436991801185300006, guid: 6e70aaccd3530494d885b5bea7d24006, type: 3}
 --- !u!223 &1421890685232118464

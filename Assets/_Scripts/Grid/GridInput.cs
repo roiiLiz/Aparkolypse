@@ -13,6 +13,7 @@ public class GridInput : MonoBehaviour
     private float rayDistance = 100f;
 
     private Vector3 targetPosition;
+    public bool allowPlacement { get; private set; } = true;
 
     public Vector3 GetGridPosition()
     {
@@ -27,6 +28,10 @@ public class GridInput : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit, rayDistance, groundLayerMask))
         {
             targetPosition = rayHit.point;
+            allowPlacement = true;
+        } else
+        {
+            allowPlacement = false;
         }
 
         return targetPosition;
@@ -34,6 +39,12 @@ public class GridInput : MonoBehaviour
 
     public bool GetGridInput()
     {
-        return Input.GetMouseButtonDown(0);
+        if (allowPlacement)
+        {
+            return Input.GetMouseButtonDown(0);
+        } else
+        {
+            return false;
+        }
     }
 }
