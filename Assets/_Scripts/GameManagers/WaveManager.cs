@@ -12,6 +12,11 @@ public class WaveManager : MonoBehaviour
     private int waveIndex = -1;
     public Wave[] waves;
     public Transform[] laneIndicators;
+    public GameObject[] enemiesLeft;
+    public int totalEnemies = 1;
+    public float remainingDeadline;
+    public float totalDeadline;
+    [SerializeField] private Image waveUI;
 
     [Header("Sound Vars")]
     
@@ -27,12 +32,29 @@ public class WaveManager : MonoBehaviour
         public GameObject[] enemyTypes;
         //public float enemyWeight;
         public float spawnIntervals;
+        public float waveDeadline;
+    }
 
+    private void Update()
+    {
+        if (waveActive)
+        {
+            if (waves[waveIndex].waveDeadline > 0)
+            {
+                waves[waveIndex].waveDeadline -= Time.deltaTime;
+                //StartCoroutine(waveUpdate());
+            }
+            
+        }
     }
 
     public IEnumerator WaveSpawn()
     {
+        waveActive = true;
         waveIndex++;
+        remainingDeadline = waves[waveIndex].waveDeadline;
+        totalDeadline = waves[waveIndex].waveDeadline;
+        StartCoroutine(waveUpdate());
         //waves[waveIndex].laneNumber = newlanestuff;
         waves[waveIndex].enemyPopulation = waves[waveIndex].enemyPopulation;
 
@@ -59,21 +81,13 @@ public class WaveManager : MonoBehaviour
 
         }
 
-        //clean up map and destroy all enemies
-        //by tag????
+        //StartCoroutine(waveUpdate());
 
-        GameObject[] enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i < enemiesLeft.Length; i++)
-        {
-            Destroy(enemiesLeft[i]);
-        }
-
-        //finanlly ride end
-        gameplayManager.GetComponent<GameplayManager>().RideEnd();
+        StartCoroutine(RickeyClear());
 
         //begin music, or fade to new track
         //expose waveIndicator UI element
-        
+
         //choose an increasing amount of lanes at random based on the wave number
         //laneAmount, lanes[] (random), enemyPopulation, enemyType, enemyTypeProbability, spawnIntervals (Random)
         //ui indicator for which lane they are spawning out of deactivated
@@ -81,7 +95,62 @@ public class WaveManager : MonoBehaviour
 
     }
 
+    public IEnumerator RickeyClear()
+    {
+        //rickey angry animation
 
+        enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy");
+        totalEnemies = enemiesLeft.Length;
+
+        for (int i = 0; i < enemiesLeft.Length; i++)
+        {
+            Destroy(enemiesLeft[i]);
+            totalEnemies--;
+        }
+
+        yield return new WaitForSeconds(1.5f);
+
+        gameplayManager.RideEnd();
+
+    }
+
+
+    public IEnumerator waveUpdate()
+    {
+        Debug.Log("wave updating!");
+        while (waveActive)
+        {
+            Debug.Log("wave updating while active!");
+
+            //maybe per wave instead?? updates entire bar right now instead of in fifth segments
+            waveUI.fillAmount = Mathf.InverseLerp(0, totalDeadline, remainingDeadline);
+            remainingDeadline--;
+            yield return new WaitForSeconds(1f);
+
+            yield return null;
+        }
+
+        yield return null;
+
+        //for (int i = 0; i < waves[waveIndex].waveDeadline; i++)
+        //{
+        //    if (waves[waveIndex].waveDeadline <= 0)
+        //    {
+        //        Debug.Log("rickey clar");
+        //        StartCoroutine(RickeyClear());
+        //    }
+        //    else if (totalEnemies < 1)
+        //    {
+        //        Debug.Log("enemy clar");
+        //        gameplayManager.GetComponent<GameplayManager>().RideEnd();
+        //    }
+        //}
+
+        //update wave ui accordingly
+        //yield return new WaitForSeconds(1f);
+
+
+    }
     //wave start trigger is  vvv
     //on ui button press, sets waveactive to true
     //hide "ride" button

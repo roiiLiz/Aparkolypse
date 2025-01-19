@@ -16,6 +16,8 @@ public class CreditManager : MonoBehaviour
     
     public static event Action<int> OnCreditsUpdate;
 
+
+    public GameplayManager gameplayManager;
     private void OnEnable()
     {
         EnemyDeathComponent.grantDeathCredits += AddCredits;
@@ -28,7 +30,7 @@ public class CreditManager : MonoBehaviour
 
     private void Start()
     {
-        SetCredits(0);
+        //SetCredits(0);
     }
 
     private void Update()
@@ -36,14 +38,14 @@ public class CreditManager : MonoBehaviour
         if (time < timeBetweenCredits)
         {
             time += Time.deltaTime;
-        } else
+        } else if (gameplayManager.GetComponent<GameplayManager>().state == GameState.RIDE)
         {
             time = 0f;
             AddCredits(creditsGenerated);
         }
     }
 
-    private void SetCredits(int creditAmount)
+    public void SetCredits(int creditAmount)
     {
         totalCredits = creditAmount;
         OnCreditsUpdate?.Invoke(totalCredits);
