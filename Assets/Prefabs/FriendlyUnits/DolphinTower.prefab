@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 7278469863112804310}
   - component: {fileID: 8687894952771596698}
   - component: {fileID: 2298013123431493094}
+  - component: {fileID: 4577453620593879517}
   m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
@@ -155,6 +156,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdf9685bcc6b144b3b46b53c680416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &4577453620593879517
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104581259761840046}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: b4ca622dbbb63d44fba40536ba14eb44, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 16.40625, y: 16.40625}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &5231241139198684911
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +223,7 @@ GameObject:
   - component: {fileID: 5177494522029504450}
   - component: {fileID: 6764882078375701686}
   - component: {fileID: 1421890685232118464}
+  - component: {fileID: 7512975872303737718}
   m_Layer: 3
   m_Name: DolphinTower
   m_TagString: Untagged
@@ -284,6 +338,7 @@ MonoBehaviour:
   maxHealth: 10
   deathComponent: {fileID: 11400000, guid: 47788d2282409f24a88ec379ac12684c, type: 2}
   unitType: 1
+  damageFlashComponent: {fileID: 7512975872303737718}
 --- !u!114 &6764882078375701686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e202283a0e302142bd49d79d518ab9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: eb5593d368385884d919a038527fea20, type: 2}
+  stats: {fileID: 11400000, guid: 8f9f517f392f18343bd87054fbf4d257, type: 2}
   healthComponent: {fileID: 5177494522029504450}
   attackRange: {fileID: 3902450498315312980}
   supportMaterial: {fileID: 2100000, guid: 16b577c23f49b4844b7437344718d6ab, type: 2}
@@ -324,3 +379,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &7512975872303737718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231241139198684911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82aec4c162e1e04889e3c1f748bfd7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashTime: 0.25
+  flashColor: {r: 255, g: 0, b: 0, a: 255}
+  sprite: {fileID: 8687894952771596698}

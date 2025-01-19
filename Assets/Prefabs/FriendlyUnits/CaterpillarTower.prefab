@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 5177494522029504450}
   - component: {fileID: 6764882078375701686}
   - component: {fileID: 1421890685232118464}
+  - component: {fileID: 5505308750602885770}
   m_Layer: 3
   m_Name: CaterpillarTower
   m_TagString: Untagged
@@ -284,6 +285,7 @@ MonoBehaviour:
   maxHealth: 10
   deathComponent: {fileID: 11400000, guid: 47788d2282409f24a88ec379ac12684c, type: 2}
   unitType: 1
+  damageFlashComponent: {fileID: 5505308750602885770}
 --- !u!114 &6764882078375701686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,3 +326,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &5505308750602885770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231241139198684911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82aec4c162e1e04889e3c1f748bfd7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashTime: 0.25
+  flashColor: {r: 255, g: 0, b: 0, a: 255}
+  sprite: {fileID: 8687894952771596698}

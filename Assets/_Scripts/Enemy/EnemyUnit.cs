@@ -57,7 +57,7 @@ public class EnemyUnit : MonoBehaviour
         if (attackRange.enemyIsInRange)
         {
             currentState = EnemyState.Attacking;
-            StartCoroutine(BeginAttackCooldown());
+            // StartCoroutine(BeginAttackCooldown());
         }
     }
 
