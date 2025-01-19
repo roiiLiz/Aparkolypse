@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,11 +43,25 @@ public class HealthComponent : MonoBehaviour
     public void Damage(Attack attack)
     {
         currentHealth -= attack.damageAmount;
+
+        TryKnockback(attack.knockbackForce, attack.attackDirection);
+
         if (damageFlashComponent != null) 
         {
             damageFlashComponent.BeginDamageFlash();
         }
         CheckHealth();
+    }
+
+    private void TryKnockback(float knockbackForce, Vector3 attackDir)
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            Vector3 knockbackDir = attackDir - transform.position;
+            rb.AddForce(knockbackDir.normalized * knockbackForce);
+        }
     }
 
     private void CheckHealth()

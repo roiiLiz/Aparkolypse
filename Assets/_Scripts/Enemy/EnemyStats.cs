@@ -12,5 +12,6 @@ public class EnemyStats : ScriptableObject
     [Tooltip("Describes the amount of seconds it takes to move one grid unit")]
     public int movementSpeedInSeconds;
     public int creditsOnDeath;
+    public AttackType attackType;
     public EnemyState startingState = EnemyState.Walking;
 }

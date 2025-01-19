@@ -7,7 +7,10 @@ public class AttackCollider : MonoBehaviour
 {
     public bool enemyIsInRange { get; private set; } = false;
     public List<GameObject> enemies = new List<GameObject>();
-    private BoxCollider attackCollider;
+
+    [SerializeField]
+    public List<UnitType> ignoreTypes = new List<UnitType>();
+    // private BoxCollider attackCollider;
     // private int enemyCount = 0;
 
     private void OnEnable() { FriendlyTowerDeathComponent.friendlyUnitDied += CheckForFriendlyUnit; }
@@ -19,10 +22,9 @@ public class AttackCollider : MonoBehaviour
         {
             GameObject unit = enemies[i];
 
-            if (unit == null || unit == friendlyUnit)
+            if (unit == null || unit == friendlyUnit || !friendlyUnit.activeInHierarchy)
             {
-                Debug.Log("Hello from if statement");
-                //hi^
+                // Debug.Log("Hello from if statement");
                 enemies.RemoveAt(i);
             }
         }
@@ -32,16 +34,16 @@ public class AttackCollider : MonoBehaviour
 
     private void Start()
     {
-        attackCollider = GetComponent<BoxCollider>();
+        // attackCollider = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         HealthComponent healthComponent = collision.GetComponent<HealthComponent>();
 
-        if (healthComponent != null)
+        if (healthComponent != null && !ignoreTypes.Contains(healthComponent.UnitType))
         {
-            Debug.Log($"Adding enemy: {collision.gameObject.name}");
+            // Debug.Log($"Adding enemy: {collision.gameObject.name}");
             enemies.Add(collision.gameObject);
             // enemyCount++;
             CheckForEnemies();

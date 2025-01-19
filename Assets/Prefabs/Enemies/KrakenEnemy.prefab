@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 1.5}
-  m_Center: {x: 2, y: 0, z: 0}
+  m_Size: {x: 40, y: 2, z: 1.5}
+  m_Center: {x: -20, y: 0, z: 0}
 --- !u!114 &3902450498315312980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,8 +80,7 @@ GameObject:
   - component: {fileID: 7278469863112804310}
   - component: {fileID: 8687894952771596698}
   - component: {fileID: 2298013123431493094}
-  - component: {fileID: 4577453620593879517}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b4ca622dbbb63d44fba40536ba14eb44, type: 3}
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -157,58 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdf9685bcc6b144b3b46b53c680416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &4577453620593879517
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104581259761840046}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b4ca622dbbb63d44fba40536ba14eb44, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 16.40625, y: 16.40625}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &5231241139198684911
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,11 +169,11 @@ GameObject:
   - component: {fileID: 7646852189755881414}
   - component: {fileID: 2790219276855588536}
   - component: {fileID: 5177494522029504450}
-  - component: {fileID: 6764882078375701686}
+  - component: {fileID: 5244863520700112104}
   - component: {fileID: 1421890685232118464}
-  - component: {fileID: 7512975872303737718}
-  m_Layer: 3
-  m_Name: DolphinTower
+  - component: {fileID: 5505308750602885770}
+  m_Layer: 0
+  m_Name: KrakenEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,6 +193,7 @@ RectTransform:
   m_Children:
   - {fileID: 2806796237498302354}
   - {fileID: 5739731739399237693}
+  - {fileID: 4269400286635165684}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -338,9 +286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   deathComponent: {fileID: 11400000, guid: 47788d2282409f24a88ec379ac12684c, type: 2}
-  unitType: 1
-  damageFlashComponent: {fileID: 7512975872303737718}
---- !u!114 &6764882078375701686
+  unitType: 2
+  damageFlashComponent: {fileID: 5505308750602885770}
+--- !u!114 &5244863520700112104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,17 +297,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5231241139198684911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e202283a0e302142bd49d79d518ab9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b0d0beace07d0f4b863c7a4f9c24238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 8f9f517f392f18343bd87054fbf4d257, type: 2}
+  stats: {fileID: 11400000, guid: a91f56b35cbdaaa45ac284ec499d48ef, type: 2}
   healthComponent: {fileID: 5177494522029504450}
   attackRange: {fileID: 3902450498315312980}
-  supportImage: {fileID: 21300000, guid: b4ca622dbbb63d44fba40536ba14eb44, type: 3}
-  headImage: {fileID: 21300000, guid: 122969959b7dbf147b2f8b9d8a033a7d, type: 3}
-  unitIcon: {fileID: 8687894952771596698}
-  firingPoint: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  firingPoint: {fileID: 4269400286635165684}
+  bulletPrefab: {fileID: 6436991801185300006, guid: 6e70aaccd3530494d885b5bea7d24006, type: 3}
 --- !u!223 &1421890685232118464
 Canvas:
   m_ObjectHideFlags: 0
@@ -383,7 +328,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &7512975872303737718
+--- !u!114 &5505308750602885770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -398,3 +343,38 @@ MonoBehaviour:
   flashTime: 0.25
   flashColor: {r: 255, g: 0, b: 0, a: 255}
   sprite: {fileID: 8687894952771596698}
+--- !u!1 &8594735638775656590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4269400286635165684}
+  m_Layer: 0
+  m_Name: BulletFiringPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4269400286635165684
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594735638775656590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980117775327052097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: 2.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

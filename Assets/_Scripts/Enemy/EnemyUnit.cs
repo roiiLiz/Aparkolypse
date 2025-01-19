@@ -11,18 +11,24 @@ public enum EnemyState
 
 public class EnemyUnit : MonoBehaviour
 {
+    [Header("Enemy Stats")]
     [SerializeField]
     private EnemyStats stats;
     [SerializeField]
     private HealthComponent healthComponent;
     [SerializeField]
     private AttackCollider attackRange;
+    [Header("Ranged Unit Variables")]
+    [SerializeField]
+    private Transform firingPoint;
+    [SerializeField]
+    private GameObject bulletPrefab;
 
     private EnemyState currentState;
     private float movementSpeed;
     private int attackDamageAmount;
     private float attackRate;
-    // private int 
+    private AttackType attackType;
 
     private bool canAttack = true;
 
@@ -32,6 +38,7 @@ public class EnemyUnit : MonoBehaviour
         movementSpeed = stats.movementSpeedInSeconds;
         attackDamageAmount = stats.damageAmount;
         attackRate = stats.attackRate;
+        attackType = stats.attackType;
     }
 
     private void Update()
@@ -63,12 +70,9 @@ public class EnemyUnit : MonoBehaviour
 
     private void TickAttackState()
     {
-        if (canAttack)
-        {
-            BeginAttack();
-        }
+        BeginAttack();
 
-        if (attackRange.enemyIsInRange == false)
+        if (attackRange.enemyIsInRange == false && attackType != AttackType.Ranged)
         {
             currentState = EnemyState.Walking;
         }
@@ -76,34 +80,55 @@ public class EnemyUnit : MonoBehaviour
 
     private void BeginAttack()
     {
-        var unitAttack = new Attack();
-
-        unitAttack.damageAmount = attackDamageAmount;
-        // unitAttack.knockbackForce = knockbackForce;
-        // TODO: See if this works
-        // unitAttack.attackDirection = Vector3.forward;
-
-        for (int i = attackRange.enemies.Count - 1; i > -1; i--)
+        if (canAttack)
         {
-            GameObject enemy = attackRange.enemies[i];
-            enemy.GetComponent<HealthComponent>().Damage(unitAttack);
-        }
+            canAttack = false;
+            switch (attackType)
+            {
+                case AttackType.Melee:
+                    var meleeAttack = new Attack();
 
-        canAttack = false;
-        StartCoroutine(BeginAttackCooldown());
+                    meleeAttack.damageAmount = attackDamageAmount;
+
+                    for (int i = attackRange.enemies.Count - 1; i >= 0; i--)
+                    {
+                        GameObject enemy = attackRange.enemies[i];
+                        enemy.GetComponent<HealthComponent>().Damage(meleeAttack);
+                    }
+                    
+                    break;
+
+                case AttackType.Ranged:
+                    var bullet = Instantiate(bulletPrefab, firingPoint.transform.position, Quaternion.identity);
+                    Bullet bulletComponent = bullet.GetComponent<Bullet>();
+
+                    bulletComponent.damageAmount = attackDamageAmount;
+                    bulletComponent.AddIgnoreType(UnitType.Enemy);
+                    bulletComponent.AddIgnoreType(UnitType.Boss);
+                    bulletComponent.SetType(healthComponent.UnitType);
+                    break;
+
+                default:
+                    break;
+            }
+
+            StartCoroutine(BeginAttackCooldown());
+        }
     }
 
     private IEnumerator BeginAttackCooldown()
     {
+        Debug.Log("Beginning attack cooldown");
         float t = 0.0f;
-        float cooldownDuration = 1.0f / attackRate;
+        float attackCooldown = 1.0f / attackRate;
 
-        while (t < cooldownDuration)
+        while (t < attackCooldown)
         {
             t += Time.deltaTime;
             yield return null;
         }
 
+        Debug.Log("Finished attack cooldown");
         canAttack = true;
     }
 }
