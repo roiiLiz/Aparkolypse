@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat_BushDark
+  m_Name: mat_DividerDiffColor
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: d86b9700f0b958545b403f3f40aaa541, type: 2}
+  m_Parent: {fileID: 2100000, guid: b7779311da1fbef458b65b0779044347, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -28,5 +28,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0.6528301, g: 0.6528301, b: 0.6528301, a: 1}
+    - _Color: {r: 0.8584906, g: 0.9131282, b: 1, a: 1}
   m_BuildTextureStacks: []
