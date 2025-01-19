@@ -17,7 +17,10 @@ public class WaveManager : MonoBehaviour
     public float remainingDeadline;
     public float totalDeadline;
     [SerializeField] private Image waveUI;
-    public GameObject[] waveSplashUI;
+    // public GameObject[] waveSplashUI;
+
+    [SerializeField]
+    private GameObject snoster;
 
     [Header("Sound Vars")]
     
@@ -72,7 +75,7 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator WaveSpawn()
     {
-        waveSplashUI[waveIndex].SetActive(true);
+        // waveSplashUI[waveIndex].SetActive(true);
         waveActive = true;
         waveIndex++;
         totalEnemies = waves[waveIndex].enemyPopulation;
@@ -85,24 +88,31 @@ public class WaveManager : MonoBehaviour
 
         for (int i = 0; i < waves[waveIndex].enemyPopulation; i++)
         {
-            Debug.Log("index is " + waveIndex);
+            if (waveIndex == 3)
+            {
+                snoster.SetActive(true);
+            } else
+            {
+
+                GameObject randomEnemy = waves[waveIndex].enemyTypes[Random.Range(0, waves[waveIndex].enemyTypes.Length)];
+
+                int currentLane = Random.Range(0, waves[waveIndex].laneAmount);
+
+                Instantiate(randomEnemy, laneIndicators[currentLane]);
+                // Debug.Log("lane is " + currentLane);
+
+                //randomEnemy.transform.SetParent(laneIndicators[currentLane]);
+
+                // Debug.Log("enemy created was " + randomEnemy.name + " " + laneIndicators[0].position);
+                yield return new WaitForSeconds(waves[waveIndex].spawnIntervals);
+            }
+            // Debug.Log("index is " + waveIndex);
             //Debug.Log("enemy pop is " + waves[waveIndex].enemyPopulation);
 
             //weighted enemyspawn function (scrapping for now)
 
             //instantiate random enemies and choose specific lanes based on lane amount
 
-            GameObject randomEnemy = waves[waveIndex].enemyTypes[Random.Range(0, waves[waveIndex].enemyTypes.Length)];
-
-            int currentLane = Random.Range(0, waves[waveIndex].laneAmount);
-
-            Instantiate(randomEnemy, laneIndicators[currentLane]);
-            Debug.Log("lane is " + currentLane);
-
-            //randomEnemy.transform.SetParent(laneIndicators[currentLane]);
-
-            Debug.Log("enemy created was " + randomEnemy.name + " " + laneIndicators[0].position);
-            yield return new WaitForSeconds(waves[waveIndex].spawnIntervals);
 
         }
 
@@ -148,10 +158,10 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator waveUpdate()
     {
-        Debug.Log("wave updating!");
+        // Debug.Log("wave updating!");
         while (waveActive)
         {
-            Debug.Log("wave updating while active!");
+            // Debug.Log("wave updating while active!");
 
             //maybe per wave instead?? updates entire bar right now instead of in fifth segments
             waveUI.fillAmount = Mathf.InverseLerp(0, totalDeadline, remainingDeadline);
