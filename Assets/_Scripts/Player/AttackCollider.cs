@@ -22,9 +22,9 @@ public class AttackCollider : MonoBehaviour
         {
             GameObject unit = enemies[i];
 
-            if (unit == null || unit == friendlyUnit)
+            if (unit == null || unit == friendlyUnit || !friendlyUnit.activeInHierarchy)
             {
-                Debug.Log("Hello from if statement");
+                // Debug.Log("Hello from if statement");
                 enemies.RemoveAt(i);
             }
         }
@@ -43,7 +43,7 @@ public class AttackCollider : MonoBehaviour
 
         if (healthComponent != null && !ignoreTypes.Contains(healthComponent.UnitType))
         {
-            Debug.Log($"Adding enemy: {collision.gameObject.name}");
+            // Debug.Log($"Adding enemy: {collision.gameObject.name}");
             enemies.Add(collision.gameObject);
             // enemyCount++;
             CheckForEnemies();

@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Linq;
+// using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FriendlyUnit : MonoBehaviour
 {
+    [Header("Friendly Unit Stats")]
     [SerializeField]
     private FriendlyUnitStats stats;
     [SerializeField]
@@ -13,14 +16,14 @@ public class FriendlyUnit : MonoBehaviour
     private AttackCollider attackRange;
     // TODO: Convert from mesh to image, update carts to be seperate & merge-able
     [SerializeField]
-    private Material supportMaterial, headMaterial;
+    private Sprite supportImage, headImage;
+    [SerializeField]
+    private Image unitIcon;
     [Header("Ranged Unit Variables")]
     [SerializeField]
     private Transform firingPoint;
     [SerializeField]
     private GameObject bulletPrefab;
-
-    private MeshRenderer mesh => GetComponent<MeshRenderer>();
 
     private int attackDamage;
     private bool canAttack = true;
@@ -51,7 +54,7 @@ public class FriendlyUnit : MonoBehaviour
 
     public void SetCartType(bool isHeadCart)
     {
-        mesh.material = isHeadCart ? headMaterial : supportMaterial;
+        unitIcon.sprite = isHeadCart ? headImage : supportImage;
     }
 
     private void BeginAttack()
