@@ -61,6 +61,8 @@ public class FriendlyUnit : MonoBehaviour
     {
         if (canAttack)
         {
+            canAttack = false;
+
             switch (attackType)
             {
                 case AttackType.Melee:
@@ -69,12 +71,14 @@ public class FriendlyUnit : MonoBehaviour
                     meleeAttack.damageAmount = attackDamage;
                     meleeAttack.knockbackForce = knockbackForce;
                     // TODO: See if this works
-                    meleeAttack.attackDirection = Vector3.right;
+                    meleeAttack.attackDirection = transform.position;
 
-                    foreach (GameObject enemy in attackRange.enemies)
+                    for (int i = attackRange.enemies.Count - 1; i >= 0; i--)
                     {
+                        GameObject enemy = attackRange.enemies[i];
                         enemy.GetComponent<HealthComponent>().Damage(meleeAttack);
                     }
+                    
                     break;
 
                 case AttackType.Ranged:
@@ -92,7 +96,6 @@ public class FriendlyUnit : MonoBehaviour
             }
         }
         
-        canAttack = false;
         StartCoroutine(BeginAttackCooldown());
     }
 

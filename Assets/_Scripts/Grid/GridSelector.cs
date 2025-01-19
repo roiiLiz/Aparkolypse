@@ -61,11 +61,4 @@ public class GridSelector : MonoBehaviour
         Collider[] interstectingObjects = Physics.OverlapSphere(selectionPreview.transform.position, sphereRadius, input.gridLayerMask);
         return interstectingObjects.Length != 0 ? false : true;
     }
-
-    // private void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.matrix = Matrix4x4.TRS(selectionPreview.transform.position, selectionPreview.transform.rotation, new Vector3((grid.cellGap.x + grid.cellSize.x) * maxGridLength, 1f, 1f));
-    //     Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
-    // }
 }

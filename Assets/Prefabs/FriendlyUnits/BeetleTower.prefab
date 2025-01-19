@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 2806796237498302354}
   - component: {fileID: 5790114668326146098}
   - component: {fileID: 3902450498315312980}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: AttackTrigger
   m_TagString: AttackTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2806796237498302354
 Transform:
   m_ObjectHideFlags: 0
@@ -48,12 +48,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: -2, y: 0, z: 0}
+  m_Size: {x: 3, y: 1, z: 1.5}
+  m_Center: {x: 2, y: 0, z: 0}
 --- !u!114 &3902450498315312980
 MonoBehaviour:
   m_ObjectHideFlags: 0
