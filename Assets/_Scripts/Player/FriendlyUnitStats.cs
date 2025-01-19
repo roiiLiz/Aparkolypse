@@ -10,7 +10,8 @@ public class FriendlyUnitStats : ScriptableObject
     public int range;
     public float attackRate;
     public float knockbackForce;
-    public float overclockDuration;
-    public OverclockStrategy overclockStrategy;
+    public AttackType attackType;
+    // public float overclockDuration;
+    // public OverclockStrategy overclockStrategy;
     public int creditCost;
 }
