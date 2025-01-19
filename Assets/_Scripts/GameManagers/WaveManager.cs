@@ -11,49 +11,26 @@ public class WaveManager : MonoBehaviour
     public bool waveActive;
     private int waveIndex = -1;
     public Wave[] waves;
+    public Transform[] laneIndicators;
 
-    [Header("UI & Sound Vars")]
-    public GameObject rideButton;
-    public GameObject[] laneIndicators;
-    public TextMeshProUGUI waveIndicatorUI;
-    public GameObject spawnPhaseIndicatorUI;
-    public GameObject ridePhaseInidcatorUI;
+    [Header("Sound Vars")]
+    
     //music
+
+    public GameplayManager gameplayManager;
 
     [System.Serializable]
     public class Wave
     {
+        public int laneAmount;
         public int enemyPopulation;
         public GameObject[] enemyTypes;
         //public float enemyWeight;
         public float spawnIntervals;
 
-
-    }
-    
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //on game start, set waves as inactive
-        //assign laneindicators to each tagged lane label
-        //also can use as parentobjects and targets during enemy spawn instantiation for organization?
-        waveActive = false;
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            StartCoroutine(WaveSpawn());
-        }
-
-    }
-
-    private IEnumerator WaveSpawn()
+    public IEnumerator WaveSpawn()
     {
         waveIndex++;
         //waves[waveIndex].laneNumber = newlanestuff;
@@ -66,17 +43,34 @@ public class WaveManager : MonoBehaviour
 
             //weighted enemyspawn function (scrapping for now)
 
-            //instantiate enemy and choose specific lanes
+            //instantiate random enemies and choose specific lanes based on lane amount
+
             GameObject randomEnemy = waves[waveIndex].enemyTypes[Random.Range(0, waves[waveIndex].enemyTypes.Length)];
 
-            Instantiate(randomEnemy, laneIndicators[Random.Range(0, waves[waveIndex].enemyTypes.Length)].transform);
+            int currentLane = Random.Range(0, waves[waveIndex].laneAmount);
 
-            Debug.Log("enemy created was " + randomEnemy.name);
+            Instantiate(randomEnemy, laneIndicators[currentLane]);
+            Debug.Log("lane is " + currentLane);
+
+            //randomEnemy.transform.SetParent(laneIndicators[currentLane]);
+
+            Debug.Log("enemy created was " + randomEnemy.name + " " + laneIndicators[0].position);
             yield return new WaitForSeconds(waves[waveIndex].spawnIntervals);
 
         }
-        
-        
+
+        //clean up map and destroy all enemies
+        //by tag????
+
+        GameObject[] enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemiesLeft.Length; i++)
+        {
+            Destroy(enemiesLeft[i]);
+        }
+
+        //finanlly ride end
+        gameplayManager.GetComponent<GameplayManager>().RideEnd();
+
         //begin music, or fade to new track
         //expose waveIndicator UI element
         
