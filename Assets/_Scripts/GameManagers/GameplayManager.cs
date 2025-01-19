@@ -14,10 +14,10 @@ public class GameplayManager : MonoBehaviour
     public WaveManager waveManager;
 
     [Header("UI Vars")]
-    public GameObject rideSwitchUI;
     public GameObject rideBtnUI;
     public GameObject shopPanelUI;
-    
+    public GameObject tutorialUI;
+
 
     public CreditManager creditManager;
     public GameOver gameOver;
@@ -41,16 +41,16 @@ public class GameplayManager : MonoBehaviour
 
     public IEnumerator Round1Begin()
     {
-        //units unable to attack
 
         //start with an amount of POP
         creditManager = creditManager.GetComponent<CreditManager>();
 
         creditManager.SetCredits(startingCreditAmount);
 
+        tutorialUI.SetActive(true);
+
         shopPanelUI.SetActive(true);
 
-        //if a unit was placed, show ride button
         rideBtnUI.SetActive(true);
         yield return null;
     }
@@ -60,6 +60,7 @@ public class GameplayManager : MonoBehaviour
         shopPanelUI.SetActive(false);
         rideBtnUI.SetActive(false);
         waveManager.waveActive = true;
+        
         StartCoroutine(waveManager.GetComponent<WaveManager>().WaveSpawn());
 
         //make grid unselectable
@@ -80,10 +81,20 @@ public class GameplayManager : MonoBehaviour
             gameOver.InitiateGameOver();
             return;
         }
-        
-        
+
         // Debug.Log("wave over! build phase starting");
         state = GameState.BUILD;
         StartCoroutine(BuildBegin());
     }
+
+    public void GameWin()
+    {
+        gameOver.InitiateGameWin();
+    }
+
+    public void TutClose()
+    {
+        tutorialUI.SetActive(false);
+    }
+
 }

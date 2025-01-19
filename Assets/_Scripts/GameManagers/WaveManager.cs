@@ -9,7 +9,7 @@ public class WaveManager : MonoBehaviour
     [Header("Wave Vars")]
     [SerializeField]
     public bool waveActive;
-    private int waveIndex = -1;
+    public int waveIndex = -1;
     public Wave[] waves;
     public Transform[] laneIndicators;
     public GameObject[] enemiesLeft;
@@ -17,6 +17,7 @@ public class WaveManager : MonoBehaviour
     public float remainingDeadline;
     public float totalDeadline;
     [SerializeField] private Image waveUI;
+    public GameObject[] waveSplashUI;
 
     [Header("Sound Vars")]
     
@@ -71,13 +72,14 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator WaveSpawn()
     {
-        
+        waveSplashUI[waveIndex].SetActive(true);
         waveActive = true;
         waveIndex++;
         totalEnemies = waves[waveIndex].enemyPopulation;
         remainingDeadline = waves[waveIndex].waveDeadline;
         totalDeadline = waves[waveIndex].waveDeadline;
         StartCoroutine(waveUpdate());
+
         //waves[waveIndex].laneNumber = newlanestuff;
         waves[waveIndex].enemyPopulation = waves[waveIndex].enemyPopulation;
 
@@ -104,6 +106,8 @@ public class WaveManager : MonoBehaviour
 
         }
 
+
+        
         //StartCoroutine(waveUpdate());
 
         // StartCoroutine(RickeyClear());
@@ -135,6 +139,10 @@ public class WaveManager : MonoBehaviour
 
         gameplayManager.RideEnd();
 
+        if (waveIndex > 4)
+        {
+            gameplayManager.GameWin();
+        }
     }
 
 

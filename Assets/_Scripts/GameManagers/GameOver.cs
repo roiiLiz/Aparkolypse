@@ -7,6 +7,8 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField]
     private CanvasGroup gameOverScreen;
+    [SerializeField]
+    private CanvasGroup gameWinScreen;
 
     private void OnEnable() { PlayerDeathComponent.playerDied += InitiateGameOver; LevelLoader.OnLevelRetry += RetryCleanup; }
     private void OnDisable() { PlayerDeathComponent.playerDied -= InitiateGameOver; LevelLoader.OnLevelRetry -= RetryCleanup; }
@@ -41,5 +43,14 @@ public class GameOver : MonoBehaviour
         gameOverScreen.alpha = 1.0f;
         gameOverScreen.blocksRaycasts = true;
         gameOverScreen.interactable = true;
+    }
+
+    public void InitiateGameWin()
+    {
+
+        Time.timeScale = 0.0f;
+        gameWinScreen.alpha = 1.0f;
+        gameWinScreen.blocksRaycasts = true;
+        gameWinScreen.interactable = true;
     }
 }
