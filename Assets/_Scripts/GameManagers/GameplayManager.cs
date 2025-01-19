@@ -16,7 +16,7 @@ public class GameplayManager : MonoBehaviour
     [Header("UI Vars")]
     public GameObject rideBtnUI;
     public GameObject shopPanelUI;
-    public GameObject tutorialUI;
+    // public GameObject tutorialUI;
 
 
     public CreditManager creditManager;
@@ -47,7 +47,7 @@ public class GameplayManager : MonoBehaviour
 
         creditManager.SetCredits(startingCreditAmount);
 
-        tutorialUI.SetActive(true);
+        // tutorialUI.SetActive(true);/
 
         shopPanelUI.SetActive(true);
 
@@ -94,7 +94,7 @@ public class GameplayManager : MonoBehaviour
 
     public void TutClose()
     {
-        tutorialUI.SetActive(false);
+        // tutorialUI.SetActive(false);
     }
 
 }

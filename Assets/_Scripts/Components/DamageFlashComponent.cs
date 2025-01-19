@@ -11,12 +11,23 @@ public class DamageFlashComponent : MonoBehaviour
     private Color defaultColor;
     [SerializeField]
     private Image sprite;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
+        if (spriteRenderer != null)
+        {
+            defaultColor = spriteRenderer.color;
+        }
+
         if (sprite == null)
         {
             sprite = GetComponent<Image>();
+            if (sprite == null)
+            {
+                return;
+            }
         }
         defaultColor = sprite.color;
     }
@@ -34,11 +45,24 @@ public class DamageFlashComponent : MonoBehaviour
         while (elapsedTime < flashTime)
         {
             elapsedTime += Time.deltaTime;
-            sprite.color = flashColor;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = flashColor;
+            } else
+            {
+                sprite.color = flashColor;
+            }
 
             yield return null;
         }
 
-        sprite.color = defaultColor;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = defaultColor;
+        } else
+        {
+            sprite.color = defaultColor;
+        }
     }
 }

@@ -10,8 +10,8 @@ public class GameOver : MonoBehaviour
     [SerializeField]
     private CanvasGroup gameWinScreen;
 
-    private void OnEnable() { PlayerDeathComponent.playerDied += InitiateGameOver; LevelLoader.OnLevelRetry += RetryCleanup; }
-    private void OnDisable() { PlayerDeathComponent.playerDied -= InitiateGameOver; LevelLoader.OnLevelRetry -= RetryCleanup; }
+    private void OnEnable() { PlayerDeathComponent.playerDied += InitiateGameOver; LevelLoader.OnLevelRetry += RetryCleanup; BossDeathComponent.bossDied += InitiateGameWin; }
+    private void OnDisable() { PlayerDeathComponent.playerDied -= InitiateGameOver; LevelLoader.OnLevelRetry -= RetryCleanup; BossDeathComponent.bossDied -= InitiateGameWin; }
 
     private void Start()
     {
