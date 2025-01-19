@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3991b7627d7a2f04386c287a2774bb26, type: 3}
   m_Name: DefaultCaterpillarStats
   m_EditorClassIdentifier: 
-  healthAmount: 0
-  damageAmount: 0
+  healthAmount: 15
+  damageAmount: 5
   range: 0
-  attackRate: 0
+  attackRate: 1
   knockbackForce: 0
-  overclockDuration: 0
-  overclockStrategy: {fileID: 0}
-  creditCost: 0
+  attackType: 1
+  creditCost: 20

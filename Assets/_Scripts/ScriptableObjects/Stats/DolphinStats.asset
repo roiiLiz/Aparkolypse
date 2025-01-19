@@ -16,5 +16,6 @@ MonoBehaviour:
   damageAmount: 0
   range: 1
   attackRate: 1
-  knockbackForce: 2
+  knockbackForce: -500
+  attackType: 0
   creditCost: 20

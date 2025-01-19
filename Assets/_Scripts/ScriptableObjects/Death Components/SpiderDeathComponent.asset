@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861b13201a0776d4cb66ea42ca01b63b, type: 3}
   m_Name: SpiderDeathComponent
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 0}
+  enemyStats: {fileID: 11400000, guid: 02db289d9fa37934bb643b9df3fc15f2, type: 2}
