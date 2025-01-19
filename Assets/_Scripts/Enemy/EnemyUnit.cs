@@ -52,11 +52,12 @@ public class EnemyUnit : MonoBehaviour
     private void TickWalkingState()
     {
         // walking logic
-        transform.Translate(Vector3.left * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.left * Time.deltaTime * movementSpeed, Space.World);
 
         if (attackRange.enemyIsInRange)
         {
             currentState = EnemyState.Attacking;
+            StartCoroutine(BeginAttackCooldown());
         }
     }
 
@@ -82,8 +83,9 @@ public class EnemyUnit : MonoBehaviour
         // TODO: See if this works
         // unitAttack.attackDirection = Vector3.forward;
 
-        foreach (GameObject enemy in attackRange.enemies)
+        for (int i = attackRange.enemies.Count - 1; i > -1; i--)
         {
+            GameObject enemy = attackRange.enemies[i];
             enemy.GetComponent<HealthComponent>().Damage(unitAttack);
         }
 

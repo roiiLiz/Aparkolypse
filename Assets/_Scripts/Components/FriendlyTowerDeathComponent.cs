@@ -10,6 +10,7 @@ public class FriendlyTowerDeathComponent : DeathComponent
     public override void Die(MonoBehaviour context)
     {
         context.gameObject.SetActive(false);
+        // Destroy(context.gameObject);
         friendlyUnitDied?.Invoke(context.gameObject);
     }
 }

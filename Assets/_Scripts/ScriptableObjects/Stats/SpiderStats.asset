@@ -15,6 +15,6 @@ MonoBehaviour:
   healthAmount: 15
   damageAmount: 10
   attackRate: 1
-  movementSpeedInSeconds: 1
+  movementSpeedInSeconds: 3
   creditsOnDeath: 5
   startingState: 0

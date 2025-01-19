@@ -15,14 +15,18 @@ public class AttackCollider : MonoBehaviour
 
     private void CheckForFriendlyUnit(GameObject friendlyUnit)
     {
-        foreach (GameObject unit in enemies.Where(i => i != null).ToList())
+        for (int i = enemies.Count - 1; i > -1; i--)
         {
-            if (unit == friendlyUnit)
+            GameObject unit = enemies[i];
+
+            if (unit == null || unit == friendlyUnit)
             {
-                print("Unit found, removing from list");
-                enemies.Remove(unit);
+                Debug.Log("Hello from if statement");
+                enemies.RemoveAt(i);
             }
         }
+
+        CheckForEnemies();
     }
 
     private void Start()
