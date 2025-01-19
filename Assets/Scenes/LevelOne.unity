@@ -375,10 +375,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1593d3c767907474b93382b82457b0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 120
   deathComponent: {fileID: 11400000, guid: 72f55901bef7dd642bf657f80af26e51, type: 2}
   unitType: 0
   damageFlashComponent: {fileID: 0}
+  firstLifeThreshold: 90
+  secondLifeThreshold: 60
+  thirdLifeThreshold: 30
 --- !u!1 &112566229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,13 +2135,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 16.7, z: -7.6}
+  m_LocalRotation: {x: 0.41025868, y: -0, z: -0, w: 0.91196924}
+  m_LocalPosition: {x: 0, y: 15.6, z: -4.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 48.442, y: 0, z: 0}
 --- !u!1001 &979718834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2336,10 +2339,10 @@ MonoBehaviour:
     zValue: 1
     laneObjects: []
     carts: []
-  grid: {fileID: 0}
+  grid: {fileID: 130579659}
   unitLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   colliderRadius: 1
 --- !u!1 &1003395040
 GameObject:
@@ -2723,10 +2726,12 @@ MonoBehaviour:
   selectedTowerPrefab:
     prefab: {fileID: 5231241139198684911, guid: 7b1b46d4598c5954cba2e1cb7db1a80e, type: 3}
     unitType: 0
+    stats: {fileID: 11400000, guid: eb5593d368385884d919a038527fea20, type: 2}
   grid: {fileID: 130579659}
   input: {fileID: 1110254001}
   sphereRadius: 1
   maxGridLength: 11
+  creditManager: {fileID: 1189925886}
 --- !u!4 &1110254003
 Transform:
   m_ObjectHideFlags: 0
@@ -4229,10 +4234,13 @@ MonoBehaviour:
   towerPrefabs:
   - prefab: {fileID: 5231241139198684911, guid: 7b1b46d4598c5954cba2e1cb7db1a80e, type: 3}
     unitType: 0
+    stats: {fileID: 11400000, guid: eb5593d368385884d919a038527fea20, type: 2}
   - prefab: {fileID: 5231241139198684911, guid: 21a4578cadf2b9c47acc9f41f95150fa, type: 3}
     unitType: 1
+    stats: {fileID: 11400000, guid: 8f9f517f392f18343bd87054fbf4d257, type: 2}
   - prefab: {fileID: 5231241139198684911, guid: 3e6d92be941dd3245b63cbf11f5516f0, type: 3}
     unitType: 2
+    stats: {fileID: 11400000, guid: b865743ac54a09547a1d89568c2bb1f5, type: 2}
 --- !u!1 &1746988193
 GameObject:
   m_ObjectHideFlags: 0

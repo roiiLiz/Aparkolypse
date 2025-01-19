@@ -28,7 +28,7 @@ public class LaneManager : MonoBehaviour
             {
                 if (lane.carts[i].cars.Contains(destroyedCart))
                 {
-                    Debug.Log("hello");
+                    // Debug.Log("hello");
                     DetermineCartStatus(lane.carts[i]);
                 }
             }
@@ -96,7 +96,7 @@ public class LaneManager : MonoBehaviour
         } else
         {
             // no hits found, seperate cart
-            Debug.Log("New Cart");
+            // Debug.Log("New Cart");
             Cart newCart = new Cart();
             newCart.cars.Add(incomingCart);
             newCart.headCar = incomingCart;
