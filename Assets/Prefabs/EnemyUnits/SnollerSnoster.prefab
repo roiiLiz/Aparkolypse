@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 40, y: 2, z: 1.5}
-  m_Center: {x: 20, y: 0, z: 0}
+  m_Size: {x: 40, y: 5, z: 1.5}
+  m_Center: {x: -20, y: 1, z: 0}
 --- !u!114 &3902450498315312980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  ignoreTypes: 
+  ignoreTypes: 0200000003000000
 --- !u!1 &1104581259761840046
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 7278469863112804310}
   - component: {fileID: 8687894952771596698}
   - component: {fileID: 2298013123431493094}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +103,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.5}
-  m_SizeDelta: {x: 3, y: 3}
+  m_AnchoredPosition: {x: 0, y: 1.2}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7278469863112804310
 CanvasRenderer:
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a944df5f7a16a57498667ad3137130a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e3fbc93e69bc0e43a25e02479b41970, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -156,6 +156,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cdf9685bcc6b144b3b46b53c680416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2549921899595615611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226005016890754252}
+  m_Layer: 0
+  m_Name: FiringPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &226005016890754252
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549921899595615611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980117775327052097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1, y: 3}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5231241139198684911
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,12 +204,13 @@ GameObject:
   - component: {fileID: 7646852189755881414}
   - component: {fileID: 2790219276855588536}
   - component: {fileID: 5177494522029504450}
-  - component: {fileID: 6764882078375701686}
+  - component: {fileID: 4223212889686775853}
   - component: {fileID: 1421890685232118464}
-  - component: {fileID: 5505308750602885770}
-  m_Layer: 3
-  m_Name: CaterpillarTower
-  m_TagString: Untagged
+  - component: {fileID: 6389337744913586884}
+  - component: {fileID: 4074839518154877662}
+  m_Layer: 0
+  m_Name: SnollerSnoster
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,18 +223,22 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5231241139198684911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 19.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2806796237498302354}
   - {fileID: 5739731739399237693}
-  - {fileID: 4269400286635165684}
+  - {fileID: 226005016890754252}
+  - {fileID: 3350003777429650639}
+  - {fileID: 9029808564044760877}
+  - {fileID: 6356127528208721419}
+  - {fileID: 1529467537426036749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &8981256311031690218
@@ -266,7 +306,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -285,13 +325,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  deathComponent: {fileID: 11400000, guid: 47788d2282409f24a88ec379ac12684c, type: 2}
-  unitType: 1
-  damageFlashComponent: {fileID: 5505308750602885770}
+  deathComponent: {fileID: 11400000, guid: d7bce89c8d9b09340923faeedfb66f7c, type: 2}
+  unitType: 3
+  damageFlashComponent: {fileID: 4074839518154877662}
   firstLifeThreshold: 0
   secondLifeThreshold: 0
   thirdLifeThreshold: 0
---- !u!114 &6764882078375701686
+--- !u!114 &4223212889686775853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,17 +340,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5231241139198684911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e202283a0e302142bd49d79d518ab9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b0d0beace07d0f4b863c7a4f9c24238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: b865743ac54a09547a1d89568c2bb1f5, type: 2}
+  stats: {fileID: 11400000, guid: 8d42a9e80cd5eb44398e333f999dd090, type: 2}
   healthComponent: {fileID: 5177494522029504450}
   attackRange: {fileID: 3902450498315312980}
-  supportImage: {fileID: 21300000, guid: a944df5f7a16a57498667ad3137130a8, type: 3}
-  headImage: {fileID: 21300000, guid: 877f5dd1f5db7fb4aba76df2ad3c52a0, type: 3}
-  unitIcon: {fileID: 8687894952771596698}
-  firingPoint: {fileID: 2806796237498302354}
+  firingPoints:
+  - {fileID: 3350003777429650639}
+  - {fileID: 9029808564044760877}
+  - {fileID: 6356127528208721419}
+  - {fileID: 1529467537426036749}
   bulletPrefab: {fileID: 6436991801185300006, guid: 6e70aaccd3530494d885b5bea7d24006, type: 3}
+  cartPrefab: {fileID: 6436991801185300006, guid: f6531a4055a2e28419df4c4d4eec0be3, type: 3}
 --- !u!223 &1421890685232118464
 Canvas:
   m_ObjectHideFlags: 0
@@ -334,7 +376,34 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &5505308750602885770
+--- !u!54 &6389337744913586884
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231241139198684911}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4074839518154877662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,7 +418,7 @@ MonoBehaviour:
   flashTime: 0.25
   flashColor: {r: 255, g: 0, b: 0, a: 255}
   sprite: {fileID: 8687894952771596698}
---- !u!1 &8594735638775656590
+--- !u!1 &5233894274097115008
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,30 +426,119 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4269400286635165684}
-  m_Layer: 3
-  m_Name: BulletFiringPoint
-  m_TagString: Untagged
+  - component: {fileID: 6356127528208721419}
+  m_Layer: 0
+  m_Name: SnosterFiringPoint3
+  m_TagString: BossFiringPoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &4269400286635165684
-RectTransform:
+--- !u!4 &6356127528208721419
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8594735638775656590}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 5233894274097115008}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 980117775327052097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 4}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6138558361353453831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1529467537426036749}
+  m_Layer: 0
+  m_Name: SnosterFiringPoint4
+  m_TagString: BossFiringPoints
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1529467537426036749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6138558361353453831}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -4, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980117775327052097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7693401965136752229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3350003777429650639}
+  m_Layer: 0
+  m_Name: SnosterFiringPoint1
+  m_TagString: BossFiringPoints
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3350003777429650639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693401965136752229}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980117775327052097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8378562059670527654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9029808564044760877}
+  m_Layer: 0
+  m_Name: SnosterFiringPoint2
+  m_TagString: BossFiringPoints
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9029808564044760877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8378562059670527654}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -4, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980117775327052097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

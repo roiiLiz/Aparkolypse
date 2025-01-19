@@ -25,6 +25,7 @@ public class FriendlyUnit : MonoBehaviour
     [SerializeField]
     private GameObject bulletPrefab;
 
+    private GameplayManager gameplayManager;
     private int attackDamage;
     private bool canAttack = true;
     private float knockbackForce;
@@ -42,11 +43,13 @@ public class FriendlyUnit : MonoBehaviour
         attackDamage = stats.damageAmount;
         knockbackForce = stats.knockbackForce;
         attackRate = stats.attackRate;
+
+        gameplayManager = GameObject.FindGameObjectWithTag("GameplayManager").GetComponent<GameplayManager>();
     }
 
     private void Update()
     {
-        if (canAttack)
+        if (canAttack && gameplayManager.state == GameState.RIDE)
         {
             BeginAttack();
         }

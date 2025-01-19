@@ -27,6 +27,12 @@ public class UnitShop : MonoBehaviour
         OnSelectNewTower?.Invoke(currentSelection);
     }
 
+    public void UpdateSelection(int index)
+    {
+        currentSelection = towerPrefabs[index];
+        OnSelectNewTower?.Invoke(currentSelection);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

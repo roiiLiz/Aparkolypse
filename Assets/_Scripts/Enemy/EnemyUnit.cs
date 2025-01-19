@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum EnemyState
@@ -20,15 +21,19 @@ public class EnemyUnit : MonoBehaviour
     private AttackCollider attackRange;
     [Header("Ranged Unit Variables")]
     [SerializeField]
-    private Transform firingPoint;
+    private Transform[] firingPoints;
     [SerializeField]
     private GameObject bulletPrefab;
+    [Header("Boss Stats")]
+    [SerializeField]
+    private GameObject cartPrefab;
 
     private EnemyState currentState;
     private float movementSpeed;
     private int attackDamageAmount;
     private float attackRate;
     private AttackType attackType;
+    private UnitType unitType;
 
     private bool canAttack = true;
 
@@ -39,6 +44,21 @@ public class EnemyUnit : MonoBehaviour
         attackDamageAmount = stats.damageAmount;
         attackRate = stats.attackRate;
         attackType = stats.attackType;
+        unitType = stats.unitType;
+
+        // if (unitType == UnitType.Boss)
+        // {
+        //     InitializeFiringPoints();
+        // }
+    }
+
+    private void InitializeFiringPoints()
+    {
+        GameObject[] points = GameObject.FindGameObjectsWithTag("BossFiringPoints");
+        foreach (GameObject point in points)
+        {
+            firingPoints.Append(point.transform);
+        }
     }
 
     private void Update()
@@ -97,15 +117,30 @@ public class EnemyUnit : MonoBehaviour
                     }
                     
                     break;
-
+                
                 case AttackType.Ranged:
-                    var bullet = Instantiate(bulletPrefab, firingPoint.transform.position, Quaternion.identity);
-                    Bullet bulletComponent = bullet.GetComponent<Bullet>();
+                    if (unitType == UnitType.Enemy)
+                    {
+                        var bullet = Instantiate(bulletPrefab, firingPoints[0].transform.position, Quaternion.identity);
+                        Bullet bulletComponent = bullet.GetComponent<Bullet>();
 
-                    bulletComponent.damageAmount = attackDamageAmount;
-                    bulletComponent.AddIgnoreType(UnitType.Enemy);
-                    bulletComponent.AddIgnoreType(UnitType.Boss);
-                    bulletComponent.SetType(healthComponent.UnitType);
+                        bulletComponent.damageAmount = attackDamageAmount;
+                        bulletComponent.AddIgnoreType(UnitType.Enemy);
+                        bulletComponent.AddIgnoreType(UnitType.Boss);
+                        bulletComponent.SetType(healthComponent.UnitType);
+                    } else if (unitType == UnitType.Boss)
+                    {
+                        for (int i = 0; i < firingPoints.Length; i++)
+                        {
+                            var cart = Instantiate(cartPrefab, firingPoints[i].transform.position, Quaternion.identity);
+                            Bullet cartDamage = cart.GetComponent<Bullet>();
+
+                            cartDamage.damageAmount = attackDamageAmount;
+                            cartDamage.AddIgnoreType(UnitType.Enemy);
+                            cartDamage.AddIgnoreType(UnitType.Boss);
+                            cartDamage.SetType(healthComponent.UnitType);
+                        }
+                    }
                     break;
 
                 default:

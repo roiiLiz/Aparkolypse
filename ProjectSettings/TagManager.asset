@@ -6,6 +6,9 @@ TagManager:
   tags:
   - AttackTrigger
   - Enemy
+  - GameplayManager
+  - Boss Firing Points
+  - BossFiringPoints
   layers:
   - Default
   - TransparentFX

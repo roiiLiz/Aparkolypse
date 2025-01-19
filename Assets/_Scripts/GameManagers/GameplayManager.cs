@@ -7,6 +7,8 @@ public enum GameState {START, BUILD, RIDE, WIN, LOSS}
 
 public class GameplayManager : MonoBehaviour
 {
+    [SerializeField]
+    private int startingCreditAmount = 40;
     public GameState state;
 
     public WaveManager waveManager;
@@ -44,7 +46,7 @@ public class GameplayManager : MonoBehaviour
         //start with an amount of POP
         creditManager = creditManager.GetComponent<CreditManager>();
 
-        creditManager.SetCredits(40);
+        creditManager.SetCredits(startingCreditAmount);
 
         shopPanelUI.SetActive(true);
 
@@ -80,7 +82,7 @@ public class GameplayManager : MonoBehaviour
         }
         
         
-        Debug.Log("wave over! build phase starting");
+        // Debug.Log("wave over! build phase starting");
         state = GameState.BUILD;
         StartCoroutine(BuildBegin());
     }

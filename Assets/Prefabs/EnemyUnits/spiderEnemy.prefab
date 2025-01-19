@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.989685, y: 3.4518433, z: 3}
-  m_Center: {x: -0.015045166, y: 1.2259216, z: 0}
+  m_Size: {x: 1.5, y: 5, z: 1.5}
+  m_Center: {x: -1, y: 1, z: 0}
 --- !u!114 &3902450498315312980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+  ignoreTypes: 0200000003000000
 --- !u!1 &1104581259761840046
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +287,9 @@ MonoBehaviour:
   deathComponent: {fileID: 11400000, guid: 3cb2ffd03cc11e04dae67ac4b31af790, type: 2}
   unitType: 2
   damageFlashComponent: {fileID: 0}
+  firstLifeThreshold: 0
+  secondLifeThreshold: 0
+  thirdLifeThreshold: 0
 --- !u!114 &4223212889686775853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +305,8 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 02db289d9fa37934bb643b9df3fc15f2, type: 2}
   healthComponent: {fileID: 5177494522029504450}
   attackRange: {fileID: 3902450498315312980}
+  firingPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
 --- !u!223 &1421890685232118464
 Canvas:
   m_ObjectHideFlags: 0

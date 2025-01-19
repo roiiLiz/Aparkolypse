@@ -13,5 +13,6 @@ public class EnemyStats : ScriptableObject
     public int movementSpeedInSeconds;
     public int creditsOnDeath;
     public AttackType attackType;
+    public UnitType unitType;
     public EnemyState startingState = EnemyState.Walking;
 }

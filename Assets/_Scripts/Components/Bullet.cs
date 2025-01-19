@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         if (unitType == UnitType.Friendly)
         {
             bulletDirection = Vector3.right;
-        } else if (unitType == UnitType.Enemy)
+        } else if (unitType == UnitType.Enemy || unitType == UnitType.Boss)
         {
             bulletDirection = Vector3.left;
         }
@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         HealthComponent healthComponent = collision.GetComponent<HealthComponent>();
-        Debug.Log("Hello");
+        // Debug.Log("Hello");
 
         if (healthComponent != null && !ignoreTypes.Contains(healthComponent.UnitType))
         {
