@@ -15,25 +15,43 @@ public class GameplayManager : MonoBehaviour
     public GameObject rideSwitchUI;
     public GameObject rideBtnUI;
     public GameObject shopPanelUI;
+    
+
+    public CreditManager creditManager;
+    public GameOver gameOver;
 
     private void Start()
     {
+        gameOver = gameOver.GetComponent<GameOver>();
+
         state = GameState.START;
-        StartCoroutine(BuildBegin());
+        StartCoroutine(Round1Begin());
     }
 
     public IEnumerator BuildBegin()
     {
         //units unable to attack
-
-        //pause POP generation
-
+        //build UI
         shopPanelUI.SetActive(true);
         rideBtnUI.SetActive(true);
         yield return null;
     }
 
+    public IEnumerator Round1Begin()
+    {
+        //units unable to attack
 
+        //start with an amount of POP
+        creditManager = creditManager.GetComponent<CreditManager>();
+
+        creditManager.SetCredits(40);
+
+        shopPanelUI.SetActive(true);
+
+        //if a unit was placed, show ride button
+        rideBtnUI.SetActive(true);
+        yield return null;
+    }
     public void RideBegin()
     {
         state = GameState.RIDE;
@@ -41,12 +59,8 @@ public class GameplayManager : MonoBehaviour
         rideBtnUI.SetActive(false);
         waveManager.waveActive = true;
         StartCoroutine(waveManager.GetComponent<WaveManager>().WaveSpawn());
-        
-        //resume POP generation
 
         //make grid unselectable
-
-        //units able to attack
 
         //check castle HP at the end of round
         //if 0, set state to LOSS
@@ -56,16 +70,18 @@ public class GameplayManager : MonoBehaviour
     public void RideEnd()
     {
         waveManager.waveActive = false;
+        
+
         if (state == GameState.LOSS)
         {
             //lossUI function call in gameover
-
+            gameOver.InitiateGameOver();
             return;
         }
         
         
         Debug.Log("wave over! build phase starting");
         state = GameState.BUILD;
-        BuildBegin();
+        StartCoroutine(BuildBegin());
     }
 }

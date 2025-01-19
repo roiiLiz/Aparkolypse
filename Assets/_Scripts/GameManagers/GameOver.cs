@@ -35,7 +35,7 @@ public class GameOver : MonoBehaviour
         gameOverScreen.interactable = false;
     }
 
-    private void InitiateGameOver()
+    public void InitiateGameOver()
     {
         Time.timeScale = 0.0f;
         gameOverScreen.alpha = 1.0f;
