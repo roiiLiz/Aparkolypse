@@ -38,16 +38,29 @@ public class WaveManager : MonoBehaviour
     private void OnEnable() { HealthComponent.OnDamageThresholdReached += ClearWave; }
     private void OnDisable() { HealthComponent.OnDamageThresholdReached -= ClearWave; }
 
+    private void Start()
+    {
+        totalEnemies = waves[0].enemyPopulation;
+    }
+
     private void Update()
     {
         if (waveActive)
         {
+            enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy");
+            totalEnemies = enemiesLeft.Length;
+
             if (waves[waveIndex].waveDeadline > 0)
             {
                 waves[waveIndex].waveDeadline -= Time.deltaTime;
                 //StartCoroutine(waveUpdate());
             }
-            
+            if (totalEnemies <= 0 && gameplayManager.state == GameState.RIDE)
+            {
+                
+                StartCoroutine(RickeyClear());
+
+            }
         }
     }
 
@@ -58,8 +71,10 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator WaveSpawn()
     {
+        
         waveActive = true;
         waveIndex++;
+        totalEnemies = waves[waveIndex].enemyPopulation;
         remainingDeadline = waves[waveIndex].waveDeadline;
         totalDeadline = waves[waveIndex].waveDeadline;
         StartCoroutine(waveUpdate());
